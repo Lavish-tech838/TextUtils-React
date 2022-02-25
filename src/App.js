@@ -1,16 +1,15 @@
 import "./App.css";
-// import About from "./components/About";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-// import Todo from "./components/Todo";
 import React, { useState } from 'react'
 import Alert from "./components/Alert";
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 
 function App() {
@@ -32,47 +31,30 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = 'grey';
       showAlert("Dark mode has been enable", "success");
-      document.title = "TextUtils - Dark Mode";
-      // setInterval(() => {
-      //   document.title = "TextUtils  is Amazing";
-      // }, 2000);
-      // setInterval(() => {
-      //   document.title = "Install TextUtils";
-      // }, 1500);
     }
     else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enable", "success");
-      document.title = "TextUtils - Light Mode";
     }
   }
   return (
     <>
-      {/* <Router> */}
+      <Router>
       <Navbar title="TextUtiles" aboutText="About" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
-      {/* <Navbar/> */}
-      {/* <Navbar title="TextUtiles"/> */}
-      {/* <ul role="list"
-       className="todo-list stack-large stack-exception"
-       area-labelledby="list-heading"
-   >
-  <Todo/>
-  <Todo/>
-   <Todo/>
-   </ul> */}
+      
       <div className="container my-3">
-      {/* <Switch>
+      <Switch>
           <Route exact path="/about">
-            <About />
+            <About mode={mode}/>
           </Route>
-          <Route exact path="/"> */}
-        <TextForm showAlert={showAlert} heading="Enter the text to Analyze below" mode={mode} />
-          {/* </Route>
-        </Switch> */}
+          <Route exact path="/">
+        <TextForm showAlert={showAlert} heading="Try-TextUtiles-Word Counter, Character Counter, Remove extra spaces" mode={mode} />
+          </Route>
+        </Switch>
       </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }
